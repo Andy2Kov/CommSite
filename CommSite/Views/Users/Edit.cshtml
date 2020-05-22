@@ -1,0 +1,39 @@
+﻿@model PhotoBank.ViewModels.EditUserViewModel
+@{
+    ViewBag.Title = "Редактирование пользователя";
+}
+    <div class="text-center mt-5 mb-2">
+        <form asp-action="Edit" asp-controller="Users">
+            <div asp-validation-summary="All" class="text-danger"></div>
+            <div class="form-group">
+                <input type="hidden" asp-for="Id" />
+            </div>
+            <div class="form-group">
+                <input type="hidden" asp-for="Check" />
+            </div>
+            <div class="form-group">
+                <label asp-for="Email" class="control-label">Email</label>
+                <input type="text" maxlength="200" asp-for="Email" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="FirstName" class="control-label">Имя</label>
+                <input type="text" maxlength="200" asp-for="FirstName" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="LastName" class="control-label">Фамилия</label>
+                <input type="text" maxlength="200" asp-for="LastName" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label>Пол</label>
+                <label><input asp-for="Sex" value="Мужской" type="radio" />Мужской</label>
+                <label><input asp-for="Sex" value="Женский" type="radio" />Женский</label>
+            </div>
+            <div class="form-group">
+                <label asp-for="BirthDay" class="control-label">День рождения</label>
+                <input type="date" min="1900-01-01" max="2020-01-01" asp-for="BirthDay" class="form-control" />
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Сохранить" class="btn btn-default" />
+            </div>
+        </form>
+        </div>

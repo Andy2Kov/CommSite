@@ -1,0 +1,37 @@
+﻿<link rel="stylesheet" href="~/css/signin.css" type="text/css" />
+@model PhotoBank.ViewModels.RegisterViewModel
+@{
+    ViewData["Title"] = "Регистрация";
+}
+
+<div class="text-center mt-5 mb-2">
+    <form method="post" class="form-signin" asp-controller="Account" asp-action="Register" asp-validation-summary="All">
+        <img class="mb-4" src="~/img/logo1.png" alt="" width="72" height="72">
+        <h4 class="h4 mb-3 font-weight-normal"><ya-tr-span data-index="0-0" data-value="Register new user" data-translation="Регистрация нового пользователя" data-type="trSpan" data-selected="false">Регистрация нового пользователя</ya-tr-span></h4>
+        <label asp-for="Email" class="sr-only"><ya-tr-span data-index="1-0" data-value="Email address" data-translation="Адрес электронной почты " data-type="trSpan">Адрес электронной почты </ya-tr-span></label>
+        <input asp-for="Email" id="Email" class="form-control" maxlength="50" placeholder="Эл. адрес" required="" autofocus="">
+        @*<span asp-validation-for="Email" class="text-danger"></span>*@
+        <label asp-for="FirstName" class="sr-only"><ya-tr-span data-index="1-0" data-value="First Name" data-translation="Имя " data-type="trSpan">Имя </ya-tr-span></label>
+        <input asp-for="FirstName" id="FirstName" class="form-control" maxlength="200" placeholder="Имя" required="" autofocus="">
+        <label asp-for="LastName" class="sr-only"><ya-tr-span data-index="1-0" data-value="Last Name" data-translation="Фамилия " data-type="trSpan">Имя </ya-tr-span></label>
+        <input asp-for="LastName" id="LastName" class="form-control" maxlength="200" placeholder="Фамилия" required="" autofocus="">
+        <label>Пол</label>
+        <label><input asp-for="Sex" value="Мужской" type="radio" />Мужской</label>
+        <label><input asp-for="Sex" value="Женский" type="radio" />Женский</label>
+        <label asp-for="BirthDay" class="sr-only"><ya-tr-span data-index="1-0" data-value="BirthDay" data-translation="Дата рождения" data-type="trSpan">Дата рождения</ya-tr-span></label>
+        <input asp-for="BirthDay" id="BirthDay" class="form-control" type="date" min="1900-01-01" max="2020-01-01" placeholder="Дата рождения" required="" autofocus="">
+        @*<span asp-validation-for="BirthDay" class="text-danger"></span>*@
+        <label asp-for="Password" class="sr-only"><ya-tr-span data-index="1-0" data-value="Password" data-translation="пароль" data-type="trSpan">пароль</ya-tr-span></label>
+        <input asp-for="Password" id="Password" class="form-control" placeholder="Пароль" required="">
+        @*<span asp-validation-for="Password" class="text-danger"></span>*@
+        <label asp-for="PasswordConfirm" class="sr-only"><ya-tr-span data-index="1-0" data-value="Password" data-translation="пароль" data-type="trSpan">поторить пароль</ya-tr-span></label>
+        <input asp-for="PasswordConfirm" id="Password" class="form-control" placeholder="Повтор пароля" required="">
+        @*<span asp-validation-for="PasswordConfirm" class="text-danger"></span>*@
+        <div asp-validation-summary="ModelOnly"></div>
+        <button class="btn btn-lg btn-primary btn-block mt-5 mb-3" type="submit"><ya-tr-span data-index="3-0" data-value="Sign in" data-translation="Регистрация" data-type="trSpan">Регистрация</ya-tr-span></button>
+    </form>
+</div>
+
+@*@section Scripts {
+    @await Html.PartialAsync("_ValidationScriptsPartial")
+}*@

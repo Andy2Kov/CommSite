@@ -1,0 +1,96 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Фотобанк</title>
+    @*<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />*@
+    <link rel="stylesheet" href="~/css/bootstrap.min.css" type="text/css" />
+    @*<link rel="stylesheet" href="~/css/site.css" />*@
+</head>
+<body>
+    <!--меню-->
+    @*<nav class="navbar navbar-inverse">
+            <div class="container">
+                <div>
+                    <ul class="nav navbar-nav">
+                        <li><a href="~/Home/Index" class="navbar-brand">Фотобанк</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>*@
+
+    <header>
+        <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+            <a class="navbar-brand" href="#">Фотобанк</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        @*<a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>*@
+                        <a class="nav-link" asp-controller="Home" asp-action="Index">Home <span class="sr-only">(current)</span></a>
+                    </li>
+                    @if (User.Identity.IsAuthenticated && User.IsInRole("user"))
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link" asp-controller="Home" asp-action="Cabinet" asp-route-email=@User.Identity.Name>Личный кабинет</a>
+                        </li>
+                    }
+                    @if (User.Identity.IsAuthenticated && User.IsInRole("admin"))
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link" asp-controller="Home" asp-action="Privacy">Администрирование</a>
+                        </li>
+                    }
+                </ul>
+
+                @if (User.Identity.IsAuthenticated)
+                {
+                    <l class="nav-item">
+                        <a class="nav-link" asp-controller="Home" asp-action="Feedback" asp-route-email=@User.Identity.Name>Обратная связь</a>
+                    </l>
+                    <h6 class="my-0 mr-md-1 font-weight-light text-white">@User.Identity.Name</h6>
+                    <form method="post" asp-controller="Account" asp-action="LogOff">
+                        <input type="submit" value="Выход" class="btn btn-outline-primary" />
+                    </form>
+                }
+                else
+                {
+                    <form method="post" asp-controller="Account" asp-action="Login" style="border-right">
+                        <input type="submit" value="Вход" class="btn btn-outline-success my-0 my-sm-1" />
+                    </form>
+                    <form method="post" asp-controller="Account" asp-action="Register">
+                        <input type="submit" value="Регистрация" class="btn btn-outline-success my-0 my-sm-1" />
+                    </form>
+                }
+            </div>
+        </nav>
+    </header>
+
+    <div class="container align-content-center">
+            <main role="main" class="pb-3">
+                @RenderBody()
+            </main>
+        </div>
+
+    @*<footer class="pt-4 my-md-5 pt-md-5 border-top">
+        <div class="container">
+            &copy; 2020 - Фотобанк - <a asp-area="" asp-controller="Home" asp-action="Index">Регистрация</a>
+        </div>
+    </footer>*@
+
+    @*<footer class="container mt-5 mb-4">
+            <p class="float-right"><a href="#">Back to top</a></p>
+            <p>© 2020 Фотобанк. · <a href="#">Privacy</a> · <a href="#">Terms</a></p>
+        </footer>*@
+
+    <script scr="~/js/bootstrap.min.js"></script>
+    @*
+        <script src="~/lib/jquery/dist/jquery.min.js"></script>
+        <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>*@
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

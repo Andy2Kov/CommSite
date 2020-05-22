@@ -1,0 +1,29 @@
+﻿<link rel="stylesheet" href="~/css/signin.css" type="text/css" />
+@model PhotoBank.ViewModels.EditUserViewModel
+@{
+    ViewData["Title"] = "Личный кабинет";
+}
+@*<h2>@ViewData["Title"]</h2>*@
+
+<div class="text-center mt-5 mb-2">
+    <form method="post" class="form-signin" asp-controller="Users" asp-action="Edit" asp-validation-summary="All">
+        @*<img class="mb-4" src="~/img/logo1.png" alt="" width="72" height="72">
+        <h1 class="h2 mb-3 font-weight-normal"><ya-tr-span data-index="0-0" data-value="Register new user" data-translation="Регистрация нового пользователя" data-type="trSpan" data-selected="false">Регистрация нового пользователя</ya-tr-span></h1>*@
+        <label asp-for="Email" class="sr-only"><ya-tr-span data-index="1-0" data-value="Email address" data-translation="Адрес электронной почты " data-type="trSpan">Адрес электронной почты </ya-tr-span></label>
+        <input asp-for="Email" id="Email" class="form-control" readonly="readonly" placeholder="Эл. адрес" required="" autofocus="">
+        @*<span asp-validation-for="Email"></span>*@
+        <label asp-for="FirstName" class="sr-only"><ya-tr-span data-index="1-0" data-value="First Name" data-translation="Имя " data-type="trSpan">Имя </ya-tr-span></label>
+        <input asp-for="FirstName" id="FirstName" class="form-control" maxlength="200" placeholder="Имя" required="" autofocus="">
+        <label asp-for="LastName" class="sr-only"><ya-tr-span data-index="1-0" data-value="Last Name" data-translation="Фамилия " data-type="trSpan">Имя </ya-tr-span></label>
+        <input asp-for="LastName" id="LastName" class="form-control" maxlength="200" placeholder="Фамилия" required="" autofocus="">
+        <label>Пол</label>
+        <label><input asp-for="Sex" value="Мужской" type="radio" />Мужской</label>
+        <label><input asp-for="Sex" value="Женский" type="radio" />Женский</label>
+        <label asp-for="BirthDay" class="sr-only"><ya-tr-span data-index="1-0" data-value="BirthDay" data-translation="Дата рождения" data-type="trSpan">Дата рождения</ya-tr-span></label>
+        <input asp-for="BirthDay" id="BirthDay" class="form-control" type="date" min="1900-01-01" max="2020-01-01" placeholder="Дата рождения" required="" autofocus="">
+        @*<span asp-validation-for="BirthDay"></span> btn btn-sm btn-primary*@
+        <a class="btn-link" asp-controller="Users" asp-action="ChangePassword" asp-route-email=@User.Identity.Name>Сменить пароль</a>
+        <div asp-validation-summary="ModelOnly"></div>
+        <button class="btn btn-lg btn-primary btn-block mt-5 mb-3" type="submit"><ya-tr-span data-index="3-0" data-value="Save" data-translation="Сохранить" data-type="trSpan">Сохранить</ya-tr-span></button>
+    </form>
+</div>
