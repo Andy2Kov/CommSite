@@ -9,7 +9,7 @@
         <img class="mb-4" src="~/img/logo1.png" alt="" width="72" height="72">
         <h4 class="h4 mb-3 font-weight-normal"><ya-tr-span data-index="0-0" data-value="Register new user" data-translation="Регистрация нового пользователя" data-type="trSpan" data-selected="false">Регистрация нового пользователя</ya-tr-span></h4>
         <label asp-for="Email" class="sr-only"><ya-tr-span data-index="1-0" data-value="Email address" data-translation="Адрес электронной почты " data-type="trSpan">Адрес электронной почты </ya-tr-span></label>
-        <input asp-for="Email" id="Email" class="form-control" maxlength="50" placeholder="Эл. адрес" required="" autofocus="">
+        <input asp-for="Email" id="Email" class="form-control" type="email" maxlength="50" placeholder="Эл. адрес" required="" autofocus="">
         @*<span asp-validation-for="Email" class="text-danger"></span>*@
         <label asp-for="FirstName" class="sr-only"><ya-tr-span data-index="1-0" data-value="First Name" data-translation="Имя " data-type="trSpan">Имя </ya-tr-span></label>
         <input asp-for="FirstName" id="FirstName" class="form-control" maxlength="200" placeholder="Имя" required="" autofocus="">
@@ -32,6 +32,6 @@
     </form>
 </div>
 
-@*@section Scripts {
+@section Scripts {
     @await Html.PartialAsync("_ValidationScriptsPartial")
-}*@
+}
