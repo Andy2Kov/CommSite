@@ -1,13 +1,16 @@
-﻿@model string
+﻿<link rel="stylesheet" href="~/css/signin.css" type="text/css" />
+@model string
 
-    <div class="text-center mt-5 mb-2">
-        <div asp-validation-summary="All" class="text-danger"></div>
-
-        <form asp-action="Create" method="post">
-            <div class="form-group">
-                <label for="name">Новая роль</label>
-                <input name="name" class="form-control" />
-            </div>
-            <button type="submit" class="btn btn-primary">Добавить</button>
-        </form>
+<div class="text-center mt-5 mb-2">
+    @*<form asp-action="Create" method="post">*@
+    <form method="post" class="form-signin" asp-action="Create" asp-validation-summary="All">
+        <div class="form-group">
+            <label for="name">Новая роль</label>
+            <input name="name" class="form-control" />
         </div>
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <button class="btn btn-lg btn-primary btn-block mt-5 mb-3" type="submit"><ya-tr-span data-index="3-0" data-value="Save" data-translation="Добавить" data-type="trSpan">Добавить</ya-tr-span></button>
+
+        @*<button type="submit" class="btn btn-primary">Добавить</button>*@
+    </form>
+    </div>

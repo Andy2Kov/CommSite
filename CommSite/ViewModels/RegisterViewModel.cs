@@ -10,15 +10,15 @@ namespace PhotoBank.ViewModels
         public string Email { get; set; }
 
         [Required]
-        [Display(Name = "FirstName")]
+        [Display(Name = "Имя")]
         public string FirstName { get; set; }
 
         [Required]
-        [Display(Name = "LastName")]
+        [Display(Name = "Фамилия")]
         public string LastName { get; set; }
 
         [Required]
-        [Display(Name = "Sex")]
+        [Display(Name = "Пол")]
         public string Sex { get; set; }
 
         [Required]

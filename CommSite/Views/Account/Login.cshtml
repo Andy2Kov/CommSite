@@ -12,7 +12,7 @@
         <input asp-for="Email" id="Email" class="form-control" placeholder="Эл. адрес" required="" autofocus="">
         @*<span asp-validation-for="Email"></span>*@
         <label asp-for="Password" class="sr-only"><ya-tr-span data-index="1-0" data-value="Password" data-translation="пароль" data-type="trSpan">пароль</ya-tr-span></label>
-        <input asp-for="Password" id="Password" class="form-control" placeholder="Пароль" required="">
+        <input asp-for="Password" id="Password" type="password" class="form-control" placeholder="Пароль" required="">
         @*<span asp-validation-for="Password"></span>*@
         <div asp-validation-summary="ModelOnly"></div>
         <div class="checkbox mb-3">

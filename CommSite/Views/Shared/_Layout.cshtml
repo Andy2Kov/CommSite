@@ -48,23 +48,26 @@
 
                 @if (User.Identity.IsAuthenticated)
                 {
-                    <l class="nav-item">
-                        <a class="nav-link" asp-controller="Home" asp-action="Feedback" asp-route-email=@User.Identity.Name>Обратная связь</a>
-                    </l>
-                    <h6 class="my-0 mr-md-1 font-weight-light text-white">@User.Identity.Name</h6>
-                    <form method="post" asp-controller="Account" asp-action="LogOff">
-                        <input type="submit" value="Выход" class="btn btn-outline-primary" />
-                    </form>
-                }
-                else
-                {
-                    <form method="post" asp-controller="Account" asp-action="Login" style="border-right">
-                        <input type="submit" value="Вход" class="btn btn-outline-success my-0 my-sm-1" />
-                    </form>
-                    <form method="post" asp-controller="Account" asp-action="Register">
-                        <input type="submit" value="Регистрация" class="btn btn-outline-success my-0 my-sm-1" />
-                    </form>
-                }
+                        @if (User.IsInRole("user"))
+                        {
+                            <l class="nav-item">
+                                <a class="nav-link" asp-controller="Home" asp-action="Feedback" asp-route-email=@User.Identity.Name>Обратная связь</a>
+                            </l>
+                        }
+                        <h6 class="my-0 mr-md-1 font-weight-light text-white">@User.Identity.Name</h6>
+                        <form method="post" asp-controller="Account" asp-action="LogOff">
+                            <input type="submit" value="Выход" class="btn btn-outline-primary" />
+                        </form>
+                    }
+                    else
+                    {
+                        <form method="post" asp-controller="Account" asp-action="Login" style="border-right">
+                            <input type="submit" value="Вход" class="btn btn-outline-success my-0 my-sm-1" />
+                        </form>
+                        <form method="post" asp-controller="Account" asp-action="Register">
+                            <input type="submit" value="Регистрация" class="btn btn-outline-success my-0 my-sm-1" />
+                        </form>
+                    }
             </div>
         </nav>
     </header>

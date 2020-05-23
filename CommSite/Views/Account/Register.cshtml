@@ -5,7 +5,7 @@
 }
 
 <div class="text-center mt-5 mb-2">
-    <form method="post" class="form-signin" asp-controller="Account" asp-action="Register" asp-validation-summary="All">
+    <form method="post" class="form-signin" asp-controller="Account" asp-action="Register">
         <img class="mb-4" src="~/img/logo1.png" alt="" width="72" height="72">
         <h4 class="h4 mb-3 font-weight-normal"><ya-tr-span data-index="0-0" data-value="Register new user" data-translation="Регистрация нового пользователя" data-type="trSpan" data-selected="false">Регистрация нового пользователя</ya-tr-span></h4>
         <label asp-for="Email" class="sr-only"><ya-tr-span data-index="1-0" data-value="Email address" data-translation="Адрес электронной почты " data-type="trSpan">Адрес электронной почты </ya-tr-span></label>
@@ -27,7 +27,7 @@
         <label asp-for="PasswordConfirm" class="sr-only"><ya-tr-span data-index="1-0" data-value="Password" data-translation="пароль" data-type="trSpan">поторить пароль</ya-tr-span></label>
         <input asp-for="PasswordConfirm" id="Password" class="form-control" placeholder="Повтор пароля" required="">
         @*<span asp-validation-for="PasswordConfirm" class="text-danger"></span>*@
-        <div asp-validation-summary="ModelOnly"></div>
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
         <button class="btn btn-lg btn-primary btn-block mt-5 mb-3" type="submit"><ya-tr-span data-index="3-0" data-value="Sign in" data-translation="Регистрация" data-type="trSpan">Регистрация</ya-tr-span></button>
     </form>
 </div>
