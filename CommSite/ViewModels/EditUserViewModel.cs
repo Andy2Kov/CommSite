@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Http;
+using System;
 using System.ComponentModel.DataAnnotations;
 
 namespace PhotoBank.ViewModels
@@ -7,6 +8,12 @@ namespace PhotoBank.ViewModels
     {
         public string Id { get; set; }
         public string Email { get; set; }
+
+        [Display(Name = "Фото профиля")]
+        public IFormFile ProfileImage { get; set; }
+
+        [Display(Name = "Фото профиля")]
+        public byte[] ProfilePicture { get; set; }
 
         [Display(Name = "Имя")]
         public string FirstName { get; set; }

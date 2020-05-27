@@ -8,6 +8,8 @@ using PhotoBank.ViewModels;
 using System.Threading.Tasks;
 using System;
 using System.Collections.Generic;
+using Microsoft.AspNetCore.Http;
+using System.IO;
 
 namespace PhotoBank.Controllers
 {
@@ -36,7 +38,17 @@ namespace PhotoBank.Controllers
             {
                 return NotFound();
             }
-            EditUserViewModel model = new EditUserViewModel { Id = user.Id, Email = user.Email, FirstName = user.FirstName, LastName = user.LastName, Sex = user.Sex, BirthDay = user.BirthDay, Check = false };
+
+            //IFormFile fromFile = null;
+            //if (user.ProfileImage != null)
+            //{
+            //    using (var ms = new MemoryStream(user.ProfileImage))
+            //    {
+            //        fromFile = new FormFile(ms, 0, ms.Length, "ava", DateTime.Now.ToString("yyyyMMddHHmmss"));
+            //    }
+            //}
+
+            EditUserViewModel model = new EditUserViewModel { Id = user.Id, ProfilePicture = user.ProfileImage, Email = user.Email, FirstName = user.FirstName, LastName = user.LastName, Sex = user.Sex, BirthDay = user.BirthDay, Check = false };
             return View(model);
         }
 

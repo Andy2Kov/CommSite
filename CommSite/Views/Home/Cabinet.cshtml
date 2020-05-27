@@ -1,4 +1,5 @@
 ﻿<link rel="stylesheet" href="~/css/signin.css" type="text/css" />
+@using System.IO;
 @model PhotoBank.ViewModels.EditUserViewModel
 @{
     ViewData["Title"] = "Личный кабинет";
@@ -9,6 +10,12 @@
     <form method="post" class="form-signin" asp-controller="Users" asp-action="Edit">
         @*<img class="mb-4" src="~/img/logo1.png" alt="" width="72" height="72">
         <h1 class="h2 mb-3 font-weight-normal"><ya-tr-span data-index="0-0" data-value="Register new user" data-translation="Регистрация нового пользователя" data-type="trSpan" data-selected="false">Регистрация нового пользователя</ya-tr-span></h1>*@
+        @if (Model.ProfilePicture != null)
+        {
+            <img style='width:300px; height:300px;' src="data:image/jpeg;base64,@(Convert.ToBase64String(Model.ProfilePicture))" />
+        }
+        <label asp-for="ProfileImage" class="sr-only"><ya-tr-span data-index="1-0" data-value="Profile Image" data-translation="Фото профиля " data-type="trSpan">Фото профиля </ya-tr-span></label>
+        <input asp-for="ProfileImage" type="file" size="524288" max="524286" id="ProfileImage" class="form-control" placeholder="Фото профиля">
         <label asp-for="Email" class="sr-only"><ya-tr-span data-index="1-0" data-value="Email address" data-translation="Адрес электронной почты " data-type="trSpan">Адрес электронной почты </ya-tr-span></label>
         <input asp-for="Email" id="Email" class="form-control" readonly="readonly" placeholder="Эл. адрес" required="" autofocus="">
         @*<span asp-validation-for="Email"></span>*@

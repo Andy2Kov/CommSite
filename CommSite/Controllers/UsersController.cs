@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Identity;
 using PhotoBank.Models;
 using PhotoBank.ViewModels;
+using System.IO;
 
 namespace PhotoBank.Controllers
 {
@@ -55,7 +56,8 @@ namespace PhotoBank.Controllers
             {
                     return NotFound();
             }
-            EditUserViewModel model = new EditUserViewModel { Id = user.Id, Email = user.Email, BirthDay = user.BirthDay, LastName = user.LastName, FirstName = user.FirstName, Sex = user.Sex, Check = (id != null) };
+
+            EditUserViewModel model = new EditUserViewModel { Id = user.Id, ProfilePicture = user.ProfileImage, Email = user.Email, BirthDay = user.BirthDay, LastName = user.LastName, FirstName = user.FirstName, Sex = user.Sex, Check = (id != null) };
             return View(model);
         }
 
@@ -73,6 +75,18 @@ namespace PhotoBank.Controllers
 
                 if (user != null)
                 {
+                    if (model.ProfileImage != null)
+                    {
+                        byte[] imageProfile = null;
+                        // считываем переданный файл в массив байтов
+                        using (var binaryReader = new BinaryReader(model.ProfileImage.OpenReadStream()))
+                        {
+                            imageProfile = binaryReader.ReadBytes((int)model.ProfileImage.Length);
+                        }
+                        // установка массива байтов
+                        user.ProfileImage = imageProfile;
+                    }
+
                     user.Email = model.Email;
                     user.UserName = model.Email;
                     user.LastName = model.LastName;

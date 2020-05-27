@@ -9,5 +9,6 @@ namespace PhotoBank.Models
         public string LastName { get; set; }
         public string Sex { get; set; }
         public DateTime BirthDay { get; set; }
+        public byte[] ProfileImage { get; set; }
     }
 }
